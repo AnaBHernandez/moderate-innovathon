@@ -32,4 +32,4 @@ notepad analisis_simple.py
 Buscar (Ctrl+F):
 
 pd.read_csv('datos_energia.csv')
-Cambiar datos_energia.csvpordatos_evento.csv
+Cambiar datos_energia.csv por datos_evento.csv

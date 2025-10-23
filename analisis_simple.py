@@ -1,69 +1,69 @@
 """
-📊 ANÁLISIS ENERGÉTICO SIMPLE
-================================
+ANALISIS ENERGETICO SIMPLE
+==========================
 Para MODERATE Innovathon - Equipo Ana + Profesora
-Ana: Responsable de análisis de negocio y presentación
+Ana: Responsable de analisis de negocio y presentacion
 """
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-# Configurar estilo general más profesional
+# Configurar estilo general mas profesional
 plt.style.use('seaborn-v0_8-darkgrid')
 plt.rcParams['figure.facecolor'] = 'white'
 plt.rcParams['axes.facecolor'] = '#f8f9fa'
 
 # =============================================
-# 1. CARGAR DATOS (Lo más simple)
+# 1. CARGAR DATOS (Lo mas simple)
 # =============================================
 print("=" * 50)
-print("📂 CARGANDO DATOS DE ENERGÍA")
+print("CARGANDO DATOS DE ENERGIA")
 print("=" * 50)
 
 # Leer archivo CSV
 df = pd.read_csv('datos_energia.csv')
 
-print(f"\n✅ Datos cargados: {len(df)} registros")
-print(f"📅 Desde {df['fecha'].min()} hasta {df['fecha'].max()}")
-print("\n🔍 Primeras filas:")
+print(f"\nDatos cargados: {len(df)} registros")
+print(f"Desde {df['fecha'].min()} hasta {df['fecha'].max()}")
+print("\nPrimeras filas:")
 print(df.head())
 
 # =============================================
-# 2. CALCULAR MÉTRICAS BÁSICAS (Fácil)
+# 2. CALCULAR METRICAS BASICAS (Facil)
 # =============================================
 print("\n" + "=" * 50)
-print("📊 CALCULANDO MÉTRICAS DE NEGOCIO")
+print("CALCULANDO METRICAS DE NEGOCIO")
 print("=" * 50)
 
 # Consumo total
 consumo_total = df['consumo_kwh'].sum()
-print(f"\n💡 Consumo total: {consumo_total:.1f} kWh")
+print(f"\nConsumo total: {consumo_total:.1f} kWh")
 
-# Generación total (si hay paneles solares)
+# Generacion total (si hay paneles solares)
 if 'generacion_kwh' in df.columns:
     generacion_total = df['generacion_kwh'].sum()
-    print(f"⚡ Generación total: {generacion_total:.1f} kWh")
+    print(f"Generacion total: {generacion_total:.1f} kWh")
     
-    # Autosuficiencia = cuánto generamos vs consumimos
+    # Autosuficiencia = cuanto generamos vs consumimos
     autosuficiencia = (generacion_total / consumo_total) * 100
-    print(f"🎯 Autosuficiencia: {autosuficiencia:.1f}%")
+    print(f"Autosuficiencia: {autosuficiencia:.1f}%")
     
     # Balance = diferencia
     balance = generacion_total - consumo_total
     if balance > 0:
-        print(f"✅ EXCEDENTE: +{balance:.1f} kWh")
+        print(f"EXCEDENTE: +{balance:.1f} kWh")
     else:
-        print(f"⚠️ DÉFICIT: {balance:.1f} kWh")
+        print(f"DEFICIT: {balance:.1f} kWh")
 
 # =============================================
-# 3. DETECTAR DESPERDICIO (Simple pero útil)
+# 3. DETECTAR DESPERDICIO (Simple pero util)
 # =============================================
 print("\n" + "=" * 50)
-print("🔍 DETECTANDO DESPERDICIO")
+print("DETECTANDO DESPERDICIO")
 print("=" * 50)
 
-# Si hay columna de ocupación
+# Si hay columna de ocupacion
 if 'ocupacion' in df.columns:
     # Desperdicio = consumo cuando no hay nadie
     df['desperdicio'] = df.apply(
@@ -74,26 +74,26 @@ if 'ocupacion' in df.columns:
     desperdicio_total = df['desperdicio'].sum()
     porcentaje_desperdicio = (desperdicio_total / consumo_total) * 100
     
-    print(f"\n🚫 Desperdicio detectado: {desperdicio_total:.1f} kWh")
-    print(f"📉 Porcentaje de desperdicio: {porcentaje_desperdicio:.1f}%")
+    print(f"\nDesperdicio detectado: {desperdicio_total:.1f} kWh")
+    print(f"Porcentaje de desperdicio: {porcentaje_desperdicio:.1f}%")
     
-    # Calcular ahorro potencial en €
-    precio_kwh = 0.15  # 15 céntimos por kWh (precio típico)
+    # Calcular ahorro potencial en euros
+    precio_kwh = 0.15  # 15 centimos por kWh (precio tipico)
     ahorro_eur = desperdicio_total * precio_kwh
     
-    print(f"💰 Ahorro potencial: {ahorro_eur:.2f} €")
+    print(f"Ahorro potencial: {ahorro_eur:.2f} euros")
 
 # =============================================
-# 4. GRÁFICOS MEJORADOS (Más claros y bonitos)
+# 4. GRAFICOS MEJORADOS (Mas claros y bonitos)
 # =============================================
 print("\n" + "=" * 50)
-print("📈 GENERANDO VISUALIZACIONES")
+print("GENERANDO VISUALIZACIONES")
 print("=" * 50)
 
-# Gráfico 1: Consumo con zonas marcadas
+# Grafico 1: Consumo con zonas marcadas
 fig, ax = plt.subplots(figsize=(14, 6))
 
-# Separar datos por ocupación
+# Separar datos por ocupacion
 if 'ocupacion' in df.columns:
     df_ocupado = df[df['ocupacion'] == 1]
     df_vacio = df[df['ocupacion'] == 0]
@@ -101,15 +101,15 @@ if 'ocupacion' in df.columns:
     # Plot con colores diferentes
     ax.plot(df_ocupado['fecha'], df_ocupado['consumo_kwh'], 
             marker='o', linewidth=3, markersize=6, color='#2ecc71', 
-            label='Consumo con ocupación', alpha=0.8)
+            label='Consumo con ocupacion', alpha=0.8)
     ax.plot(df_vacio['fecha'], df_vacio['consumo_kwh'], 
             marker='o', linewidth=3, markersize=6, color='#e74c3c', 
-            label='⚠️ DESPERDICIO (sin ocupación)', alpha=0.8)
+            label='DESPERDICIO (sin ocupacion)', alpha=0.8)
 else:
     ax.plot(df['fecha'], df['consumo_kwh'], 
             marker='o', linewidth=3, markersize=6, color='#3498db', alpha=0.8)
 
-ax.set_title('📊 Consumo Energético: ¿Dónde Perdemos Dinero?', 
+ax.set_title('Consumo Energetico: Donde Perdemos Dinero?', 
              fontsize=18, fontweight='bold', pad=20)
 ax.set_xlabel('Fecha y Hora', fontsize=14, fontweight='bold')
 ax.set_ylabel('Consumo (kWh)', fontsize=14, fontweight='bold')
@@ -119,82 +119,82 @@ ax.legend(fontsize=12, loc='upper right')
 # Rotar etiquetas
 plt.xticks(rotation=45, ha='right')
 
-# Añadir anotación
+# Anadir anotacion
 if 'ocupacion' in df.columns and desperdicio_total > 0:
-    ax.text(0.5, 0.95, f'🚫 Desperdicio total: {porcentaje_desperdicio:.1f}% = {ahorro_eur:.2f}€',
+    ax.text(0.5, 0.95, f'Desperdicio total: {porcentaje_desperdicio:.1f}% = {ahorro_eur:.2f} euros',
             transform=ax.transAxes, fontsize=14, fontweight='bold',
             bbox=dict(boxstyle='round', facecolor='#ffe5e5', alpha=0.8),
             horizontalalignment='center', verticalalignment='top')
 
 plt.tight_layout()
 plt.savefig('grafico_consumo.png', dpi=200, bbox_inches='tight')
-print("✅ Guardado: grafico_consumo.png")
+print("Guardado: grafico_consumo.png")
 plt.close()
 
-# Gráfico 2: Comparación mejorada (si hay generación)
+# Grafico 2: Comparacion mejorada (si hay generacion)
 if 'generacion_kwh' in df.columns:
     fig, ax = plt.subplots(figsize=(14, 6))
     
-    # Plot de consumo y generación
+    # Plot de consumo y generacion
     ax.fill_between(range(len(df)), df['consumo_kwh'], 
                      alpha=0.3, color='#e74c3c', label='Consumo')
     ax.plot(df['fecha'], df['consumo_kwh'], 
             linewidth=3, color='#c0392b', marker='o', markersize=5)
     
     ax.fill_between(range(len(df)), df['generacion_kwh'], 
-                     alpha=0.3, color='#2ecc71', label='Generación')
+                     alpha=0.3, color='#2ecc71', label='Generacion')
     ax.plot(df['fecha'], df['generacion_kwh'], 
             linewidth=3, color='#27ae60', marker='s', markersize=5, linestyle='--')
     
-    ax.set_title('⚡ Balance Energético: ¿Generamos lo Suficiente?', 
+    ax.set_title('Balance Energetico: Generamos lo Suficiente?', 
                  fontsize=18, fontweight='bold', pad=20)
     ax.set_xlabel('Fecha y Hora', fontsize=14, fontweight='bold')
-    ax.set_ylabel('Energía (kWh)', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Energia (kWh)', fontsize=14, fontweight='bold')
     ax.legend(fontsize=12, loc='upper right')
     ax.grid(True, alpha=0.3, linestyle='--')
     
     # Rotar etiquetas
     plt.xticks(rotation=45, ha='right')
     
-    # Añadir anotaciones
-    ax.text(0.5, 0.95, f'🎯 Autosuficiencia: {autosuficiencia:.1f}% | Balance: {balance:.1f} kWh',
+    # Anadir anotaciones
+    ax.text(0.5, 0.95, f'Autosuficiencia: {autosuficiencia:.1f}% | Balance: {balance:.1f} kWh',
             transform=ax.transAxes, fontsize=14, fontweight='bold',
             bbox=dict(boxstyle='round', facecolor='#e8f4f8', alpha=0.8),
             horizontalalignment='center', verticalalignment='top')
     
     plt.tight_layout()
     plt.savefig('grafico_balance.png', dpi=200, bbox_inches='tight')
-    print("✅ Guardado: grafico_balance.png")
+    print("Guardado: grafico_balance.png")
     plt.close()
 
 # =============================================
 # 5. RESUMEN EJECUTIVO (Para presentar)
 # =============================================
 print("\n" + "=" * 50)
-print("📋 RESUMEN EJECUTIVO")
+print("RESUMEN EJECUTIVO")
 print("=" * 50)
 
 print(f"""
-SITUACIÓN ACTUAL:
+SITUACION ACTUAL:
 • Consumo analizado: {consumo_total:.1f} kWh
-• Período: {len(df)} registros
+• Periodo: {len(df)} registros
 """)
 
 if 'generacion_kwh' in df.columns:
-    print(f"""• Generación solar: {generacion_total:.1f} kWh
+    print(f"""• Generacion solar: {generacion_total:.1f} kWh
 • Autosuficiencia: {autosuficiencia:.1f}%""")
 
 if 'ocupacion' in df.columns:
     print(f"""
 OPORTUNIDADES DETECTADAS:
 • Desperdicio: {porcentaje_desperdicio:.1f}% del consumo
-• Ahorro potencial: {ahorro_eur:.2f} € en este período
+• Ahorro potencial: {ahorro_eur:.2f} euros en este periodo
 
-RECOMENDACIÓN:
-• Implementar control automático cuando edificio vacío
-• Monitoreo en tiempo real para detectar anomalías
+RECOMENDACION:
+• Implementar control automatico cuando edificio vacio
+• Monitoreo en tiempo real para detectar anomalias
 • Objetivo: Reducir desperdicio a <10%
 """)
 
-print("\n✅ ANÁLISIS COMPLETADO")
+print("\nANALISIS COMPLETADO")
 print("=" * 50)
