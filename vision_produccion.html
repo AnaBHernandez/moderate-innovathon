@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visión de Producción - MODERATE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #764ba2;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .architecture {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .layer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 200px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .layer:hover {
+            transform: translateY(-10px);
+        }
+        .layer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .layer p {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 0 10px;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .tech-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        .tech-card h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .metric-card h3 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .metric-card p {
+            font-size: 1.1em;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        .timeline-item h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .comparison-card {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .comparison-card.poc {
+            background: #e3f2fd;
+            border: 3px solid #2196f3;
+        }
+        .comparison-card.production {
+            background: #f3e5f5;
+            border: 3px solid #9c27b0;
+        }
+        .comparison-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .comparison-card ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+        .comparison-card ul li {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+        }
+        .comparison-card ul li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Visión de Producción</h1>
+        <p class="subtitle">De POC a Solución Escalable en GCP</p>
+
+        <!-- Comparación POC vs Producción -->
+        <div class="section">
+            <h2>📊 Dos Fases de Implementación</h2>
+            <div class="comparison">
+                <div class="comparison-card poc">
+                    <h3>FASE 1: POC (Hoy)</h3>
+                    <ul>
+                        <li>Script Python local</li>
+                        <li>Análisis en minutos</li>
+                        <li>Gráficos PNG</li>
+                        <li>Pandas + Matplotlib</li>
+                        <li>Implementable en 1 día</li>
+                    </ul>
+                </div>
+                <div class="comparison-card production">
+                    <h3>FASE 2: Producción (2-3 semanas)</h3>
+                    <ul>
+                        <li>Arquitectura Cloud (GCP)</li>
+                        <li>Procesamiento en tiempo real</li>
+                        <li>Dashboard interactivo</li>
+                        <li>Composer + BigQuery</li>
+                        <li>Escalable a múltiples edificios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arquitectura Medallion -->
+        <div class="section">
+            <h2>🏗️ Arquitectura Medallion (Producción)</h2>
+            <div class="architecture">
+                <div class="layer">
+                    <h3>🥉 BRONZE</h3>
+                    <p><strong>Datos Crudos</strong></p>
+                    <p>Cloud Storage</p>
+                    <p>Formato: JSON/CSV</p>
+                    <p>Inmutable y trazable</p>
+                </div>
+                <span class="arrow">→</span>
+                <div class="layer">
+                    <h3>🥈 SILVER</h3>
+                    <p><strong>Datos Limpios</strong></p>
+                    <p>BigQuery</p>
+                    <p>Validación y enriquecimiento</p>
+                    <p>Normalización de timestamps</p>
+                </div>
+                <span class="arrow">→</span>
+                <div class="layer">
+                    <h3>🥇 GOLDEN</h3>
+                    <p><strong>Métricas de Negocio</strong></p>
+                    <p>BigQuery Analytics</p>
+                    <p>KPIs calculados</p>
+                    <p>Listo para visualización</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stack Tecnológico -->
+        <div class="section">
+            <h2>🛠️ Stack Tecnológico</h2>
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <h4>⚙️ Orquestación</h4>
+                    <p><strong>GCP Composer / Airflow</strong></p>
+                    <p>Automatización de pipelines</p>
+                    <p>Ejecución cada 15 minutos</p>
+                    <p>Monitoreo de fallos</p>
+                </div>
+                <div class="tech-card">
+                    <h4>💾 Almacenamiento</h4>
+                    <p><strong>Cloud Storage + BigQuery</strong></p>
+                    <p>Datos crudos en buckets</p>
+                    <p>Procesamiento columnar</p>
+                    <p>Queries sub-segundo</p>
+                </div>
+                <div class="tech-card">
+                    <h4>📊 Visualización</h4>
+                    <p><strong>Looker Studio</strong></p>
+                    <p>Dashboards en tiempo real</p>
+                    <p>Alertas automáticas</p>
+                    <p>Acceso multi-usuario</p>
+                </div>
+                <div class="tech-card">
+                    <h4>🏗️ Infraestructura</h4>
+                    <p><strong>Terraform (IaC)</strong></p>
+                    <p>Despliegue en 1 hora</p>
+                    <p>Replicable multi-región</p>
+                    <p>Versionado en Git</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Métricas Simuladas -->
+        <div class="section">
+            <h2>📈 Vista de Dashboard de Producción</h2>
+            <div class="metrics">
+                <div class="metric-card">
+                    <h3>16.1%</h3>
+                    <p>Desperdicio Detectado</p>
+                </div>
+                <div class="metric-card">
+                    <h3>32.73€</h3>
+                    <p>Ahorro Potencial</p>
+                </div>
+                <div class="metric-card">
+                    <h3>56.1%</h3>
+                    <p>Autosuficiencia Energética</p>
+                </div>
+                <div class="metric-card">
+                    <h3>7 min</h3>
+                    <p>Latencia Sensor → Dashboard</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline de Implementación -->
+        <div class="section">
+            <h2>⏱️ Timeline de Implementación</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Semana 1: POC Funcional</h4>
+                    <p>✅ Script Python local</p>
+                    <p>✅ Validación de lógica de negocio</p>
+                    <p>✅ Aprobación de stakeholders</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Semana 2: Infraestructura Cloud</h4>
+                    <p>🔧 Despliegue con Terraform</p>
+                    <p>🔧 Configuración de Composer</p>
+                    <p>🔧 Setup de BigQuery datasets</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Semana 3: Pipeline de Datos</h4>
+                    <p>🔧 Implementación Bronze → Silver → Golden</p>
+                    <p>🔧 Testing de carga</p>
+                    <p>🔧 Validación de métricas</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Semana 4: Dashboard y Alertas</h4>
+                    <p>🔧 Looker Studio dashboards</p>
+                    <p>🔧 Alertas automáticas</p>
+                    <p>🔧 Documentación y handover</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mi Experiencia -->
+        <div class="section">
+            <h2>💼 Experiencia Relevante</h2>
+            <div class="tech-card">
+                <h4>Cloud And Delivery - 3 meses</h4>
+                <p>✓ Implementé pipelines con GCP Composer</p>
+                <p>✓ Trabajé con BigQuery y Cloud Storage</p>
+                <p>✓ Resolví bloqueos críticos de IAM en producción</p>
+                <p>✓ Participé en preparación de licitaciones técnicas</p>
+                <p><em>"Esta experiencia me enseñó que las mejores soluciones no son las más complejas, son las que funcionan cuando más las necesitas."</em></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee;">
+            <p style="color: #666;">
+                <strong>Equipo MODERATE Innovathon</strong><br>
+                Ana Belén Hernández - Análisis de Negocio & Presentación<br>
+                24 octubre 2024 - Escuela Politécnica de Gijón
+            </p>
+        </div>
+    </div>
+</body>
+</html>

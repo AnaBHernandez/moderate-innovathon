@@ -7,6 +7,12 @@ Ana: Responsable de análisis de negocio y presentación
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+# Configurar estilo general más profesional
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.rcParams['figure.facecolor'] = 'white'
+plt.rcParams['axes.facecolor'] = '#f8f9fa'
 
 # =============================================
 # 1. CARGAR DATOS (Lo más simple)
@@ -78,38 +84,88 @@ if 'ocupacion' in df.columns:
     print(f"💰 Ahorro potencial: {ahorro_eur:.2f} €")
 
 # =============================================
-# 4. GRÁFICOS SIMPLES (Visual pero claro)
+# 4. GRÁFICOS MEJORADOS (Más claros y bonitos)
 # =============================================
 print("\n" + "=" * 50)
 print("📈 GENERANDO VISUALIZACIONES")
 print("=" * 50)
 
-# Gráfico 1: Consumo a lo largo del tiempo
-plt.figure(figsize=(12, 5))
-plt.plot(df['fecha'], df['consumo_kwh'], marker='o', linewidth=2, markersize=4)
-plt.title('📊 Consumo Energético en el Tiempo', fontsize=14, fontweight='bold')
-plt.xlabel('Fecha')
-plt.ylabel('Consumo (kWh)')
-plt.grid(True, alpha=0.3)
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.savefig('grafico_consumo.png', dpi=150)
-print("✅ Guardado: grafico_consumo.png")
+# Gráfico 1: Consumo con zonas marcadas
+fig, ax = plt.subplots(figsize=(14, 6))
 
-# Gráfico 2: Comparación (si hay generación)
+# Separar datos por ocupación
+if 'ocupacion' in df.columns:
+    df_ocupado = df[df['ocupacion'] == 1]
+    df_vacio = df[df['ocupacion'] == 0]
+    
+    # Plot con colores diferentes
+    ax.plot(df_ocupado['fecha'], df_ocupado['consumo_kwh'], 
+            marker='o', linewidth=3, markersize=6, color='#2ecc71', 
+            label='Consumo con ocupación', alpha=0.8)
+    ax.plot(df_vacio['fecha'], df_vacio['consumo_kwh'], 
+            marker='o', linewidth=3, markersize=6, color='#e74c3c', 
+            label='⚠️ DESPERDICIO (sin ocupación)', alpha=0.8)
+else:
+    ax.plot(df['fecha'], df['consumo_kwh'], 
+            marker='o', linewidth=3, markersize=6, color='#3498db', alpha=0.8)
+
+ax.set_title('📊 Consumo Energético: ¿Dónde Perdemos Dinero?', 
+             fontsize=18, fontweight='bold', pad=20)
+ax.set_xlabel('Fecha y Hora', fontsize=14, fontweight='bold')
+ax.set_ylabel('Consumo (kWh)', fontsize=14, fontweight='bold')
+ax.grid(True, alpha=0.3, linestyle='--')
+ax.legend(fontsize=12, loc='upper right')
+
+# Rotar etiquetas
+plt.xticks(rotation=45, ha='right')
+
+# Añadir anotación
+if 'ocupacion' in df.columns and desperdicio_total > 0:
+    ax.text(0.5, 0.95, f'🚫 Desperdicio total: {porcentaje_desperdicio:.1f}% = {ahorro_eur:.2f}€',
+            transform=ax.transAxes, fontsize=14, fontweight='bold',
+            bbox=dict(boxstyle='round', facecolor='#ffe5e5', alpha=0.8),
+            horizontalalignment='center', verticalalignment='top')
+
+plt.tight_layout()
+plt.savefig('grafico_consumo.png', dpi=200, bbox_inches='tight')
+print("✅ Guardado: grafico_consumo.png")
+plt.close()
+
+# Gráfico 2: Comparación mejorada (si hay generación)
 if 'generacion_kwh' in df.columns:
-    plt.figure(figsize=(12, 5))
-    plt.plot(df['fecha'], df['consumo_kwh'], label='Consumo', linewidth=2)
-    plt.plot(df['fecha'], df['generacion_kwh'], label='Generación', linewidth=2, linestyle='--')
-    plt.title('⚡ Consumo vs Generación', fontsize=14, fontweight='bold')
-    plt.xlabel('Fecha')
-    plt.ylabel('Energía (kWh)')
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-    plt.xticks(rotation=45)
+    fig, ax = plt.subplots(figsize=(14, 6))
+    
+    # Plot de consumo y generación
+    ax.fill_between(range(len(df)), df['consumo_kwh'], 
+                     alpha=0.3, color='#e74c3c', label='Consumo')
+    ax.plot(df['fecha'], df['consumo_kwh'], 
+            linewidth=3, color='#c0392b', marker='o', markersize=5)
+    
+    ax.fill_between(range(len(df)), df['generacion_kwh'], 
+                     alpha=0.3, color='#2ecc71', label='Generación')
+    ax.plot(df['fecha'], df['generacion_kwh'], 
+            linewidth=3, color='#27ae60', marker='s', markersize=5, linestyle='--')
+    
+    ax.set_title('⚡ Balance Energético: ¿Generamos lo Suficiente?', 
+                 fontsize=18, fontweight='bold', pad=20)
+    ax.set_xlabel('Fecha y Hora', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Energía (kWh)', fontsize=14, fontweight='bold')
+    ax.legend(fontsize=12, loc='upper right')
+    ax.grid(True, alpha=0.3, linestyle='--')
+    
+    # Rotar etiquetas
+    plt.xticks(rotation=45, ha='right')
+    
+    # Añadir anotaciones
+    ax.text(0.5, 0.95, f'🎯 Autosuficiencia: {autosuficiencia:.1f}% | Balance: {balance:.1f} kWh',
+            transform=ax.transAxes, fontsize=14, fontweight='bold',
+            bbox=dict(boxstyle='round', facecolor='#e8f4f8', alpha=0.8),
+            horizontalalignment='center', verticalalignment='top')
+    
     plt.tight_layout()
-    plt.savefig('grafico_balance.png', dpi=150)
+    plt.savefig('grafico_balance.png', dpi=200, bbox_inches='tight')
     print("✅ Guardado: grafico_balance.png")
+    plt.close()
 
 # =============================================
 # 5. RESUMEN EJECUTIVO (Para presentar)
