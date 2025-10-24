@@ -1,0 +1,101 @@
+{
+  "fecha_generacion": "2025-10-24T15:21:44.587145Z",
+  "lat": 40.9701039,
+  "lon": -5.6635397,
+  "hdd_next7": [
+    3.5999999999999996,
+    3.8000000000000007,
+    5.4,
+    6.699999999999999,
+    4.300000000000001,
+    3.9000000000000004,
+    4.1
+  ],
+  "biomass_factor_ton_per_MWh": 0.2,
+  "resultados": [
+    {
+      "instalacion": "M218807",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M218820",
+      "energia_semana_MWh": 13.63,
+      "biomasa_semana_ton": 2.73,
+      "modelo_r2": 0.06
+    },
+    {
+      "instalacion": "M220825",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M220850",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M220853",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M220854",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M220860",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M222805",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M222813",
+      "energia_semana_MWh": 1.62,
+      "biomasa_semana_ton": 0.32,
+      "modelo_r2": 0.446
+    },
+    {
+      "instalacion": "M222819",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M222820",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M222821",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M222824",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    },
+    {
+      "instalacion": "M223296",
+      "energia_semana_MWh": 0.0,
+      "biomasa_semana_ton": 0.0,
+      "modelo_r2": 0.0
+    }
+  ]
+}
