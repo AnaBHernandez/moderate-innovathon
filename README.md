@@ -1,103 +1,126 @@
-# MODERATE Innovathon - Analisis Energetico Simple
+# MODERATE 2025 - PROYECTO FINAL
 
-**Evento:** 24 octubre 2024 - Escuela Politecnica Gijon  
-**Equipo:** Ana Belen + Profesora
+## 🎯 **RESUMEN DEL PROYECTO**
 
----
+Análisis predictivo de consumo energético y biomasa utilizando datos históricos (2019-2025) y modelos de machine learning para optimizar la gestión energética en instalaciones industriales.
 
-## QUE HACE ESTE PROYECTO
+### 📊 **ENTREGABLE PRINCIPAL**
 
-Este proyecto analiza el consumo energetico de edificios para detectar **desperdicio de energia** y calcular el **ahorro potencial en euros**.
+![Análisis Completo con Outliers](entregable_final_con_outliers.png)
 
-### PROBLEMA QUE RESUELVE:
-- Las instalaciones consumen energia cuando estan vacias
-- No hay control automatico del consumo
-- Se pierde dinero en energia desperdiciada
+**Dashboard completo con:**
+- ✅ Comparación histórica consumo energético con detección de outliers
+- ✅ Comparación histórica consumo biomasa con detección de outliers  
+- ✅ Gráfica indicando valores outliers detectados (55 outliers en demanda, 65 en biomasa)
+- ✅ Tabla resumen completa con estadísticas de outliers
+- ✅ Alertas automáticas basadas en detección de outliers
 
-### SOLUCION:
-- Detecta cuando hay desperdicio (consumo sin ocupacion)
-- Calcula cuanto dinero se puede ahorrar
-- Genera graficos profesionales para presentar
-- Da recomendaciones accionables
+## 📁 **ESTRUCTURA DEL PROYECTO**
 
----
-
-## COMO USAR
-
-### 1. INSTALAR DEPENDENCIAS
-```bash
-pip install pandas matplotlib
+```
+moderate-innovathon/
+├── README.md                                    # Este archivo
+├── entregable_final_con_datos_reales.py         # Script principal con outliers
+├── entregable_final_con_outliers.png            # Dashboard principal
+├── graficos/                                    # Visualizaciones
+│   └── entregable_final_moderate.png           # Dashboard alternativo
+└── datos_originales/                           # Datos originales del evento
+    ├── hdd-anual/                              # Datos HDD anuales (2019-2025)
+    ├── produccion-energetica/                  # Datos de producción energética
+    ├── consumo-biomasa.xlsx                    # Datos de consumo de biomasa
+    ├── presentacion.pdf                        # Presentación del evento
+    └── api-aemet.pdf                           # Documentación API AEMET
 ```
 
-### 2. EJECUTAR ANALISIS
+## 🚀 **CÓMO EJECUTAR EL PROYECTO**
+
+### 1. **Análisis Completo con Outliers (Recomendado)**
 ```bash
-python analisis_simple.py
+python entregable_final_con_datos_reales.py
+```
+**Genera:** Dashboard completo con detección de outliers, alertas automáticas y tabla resumen.
+
+### 2. **Análisis de Datos Reales**
+Los notebooks incluidos muestran el análisis completo:
+- **`CTIC_PREDICCION_ENERGIA.ipynb`** - Análisis de predicción energética con LSTM
+- **`HDD_futur.ipynb`** - Análisis de Heating Degree Days y predicciones meteorológicas
+
+### 3. **Resultados Visuales**
+- **`entregable_final_con_outliers.png`** - Dashboard principal con outliers
+- **`graficos/entregable_final_moderate.png`** - Dashboard alternativo
+
+## 📊 **RESULTADOS PRINCIPALES**
+
+### **Datos Procesados:**
+- **HDD:** 2,485 días (2019-2025) con datos meteorológicos reales
+- **Demanda energética:** 1,825 registros con outliers detectados
+- **Biomasa:** 1,825 registros con outliers detectados
+- **Outliers detectados:** 55 en demanda (3.0%), 65 en biomasa (3.6%)
+
+### **Modelos Desarrollados:**
+1. **Modelo LSTM** - Predicción de consumo energético
+2. **Modelo MLP** - Predicción de consumo de biomasa
+3. **Detección de Outliers** - Método IQR para identificar valores extremos
+
+### **Entregables Generados:**
+- ✅ **Dashboard completo** con detección de outliers
+- ✅ **Alertas automáticas** basadas en outliers (120 alertas totales)
+- ✅ **Tabla resumen** con estadísticas completas de outliers
+- ✅ **Visualizaciones profesionales** con marcadores de outliers
+
+## 🎯 **CONTENIDO PRINCIPAL ENTREGADO**
+
+### **1. Gráficos Comparativos con Outliers**
+- **Consumo energético histórico** con outliers marcados en rojo
+- **Consumo biomasa histórico** con outliers marcados en rojo
+- **Detección automática** de 120 outliers totales
+- **Umbrales estadísticos** (superior e inferior) visualizados
+
+### **2. Sistema de Alertas Inteligente**
+- **120 alertas generadas** automáticamente
+- **Clasificación por outliers:** Críticas, Altas, Normales
+- **Método IQR** para detección robusta de anomalías
+- **Visualización** de umbrales en gráficos
+
+### **3. Tabla Resumen Completa**
+- **Estadísticas por variable:** Promedio, Máximo, Mínimo, Desviación
+- **Outliers por categoría:** Cantidad y porcentaje
+- **Métricas de calidad:** Método IQR, factor 1.5
+- **Total de registros:** 1,825 por variable
+
+## 📈 **MÉTRICAS DE CALIDAD**
+
+- **Outliers detectados:** 55 en demanda (3.0%), 65 en biomasa (3.6%)
+- **Método de detección:** IQR (Interquartile Range) con factor 1.5
+- **Precisión del modelo:** MSE 0.001750, RMSE 0.041836, MAE 0.005651
+- **Cobertura temporal:** 5+ años de datos históricos (2019-2025)
+- **Robustez:** Detección automática de anomalías en tiempo real
+
+## 🔧 **TECNOLOGÍAS UTILIZADAS**
+
+- **Python 3.x** - Lenguaje principal
+- **Pandas** - Procesamiento y análisis de datos
+- **NumPy** - Cálculos numéricos y estadísticos
+- **Matplotlib/Seaborn** - Visualizaciones profesionales
+- **Scikit-learn** - Modelos de machine learning
+- **TensorFlow/Keras** - Redes neuronales LSTM y MLP
+- **Método IQR** - Detección robusta de outliers
+
+## 📋 **REQUISITOS DEL SISTEMA**
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn tensorflow
 ```
 
-### 3. GENERAR GRAFICOS DE PRESENTACION
-```bash
-python graficos_presentacion.py
-```
+## 🏆 **INNOVACIÓN DEL PROYECTO**
+
+1. **Detección automática de outliers** usando método IQR robusto
+2. **Modelos LSTM y MLP** para predicción de consumo energético y biomasa
+3. **Sistema de alertas inteligente** basado en anomalías detectadas
+4. **Visualizaciones profesionales** con marcadores de outliers
+5. **Análisis temporal completo** (2019-2025) con datos meteorológicos reales
+6. **Integración AEMET** para predicciones meteorológicas de 7 días
 
 ---
-
-## ARCHIVOS PRINCIPALES
-
-### Scripts de Analisis:
-- **`analisis_simple.py`** - Analisis principal con deteccion de desperdicio
-- **`graficos_presentacion.py`** - Genera graficos para presentacion
-
-### Datos:
-- **`datos_energia.csv`** - Dataset con consumo, generacion y ocupacion
-
-### Documentacion:
-- **`GUIA_METER_DATOS.md`** - Como actualizar datos del evento
-- **`GUION_PRESENTACION.md`** - Script de 2 minutos para presentar
-
-### Visualizaciones:
-- **`grafico_consumo.png`** - Analisis de desperdicio
-- **`grafico_balance.png`** - Balance energetico
-- **`presentacion_barras.png`** - Grafico de barras para presentacion
-- **`presentacion_resumen.png`** - Dashboard ejecutivo
-
-### Web:
-- **`vision_produccion.html`** - Pagina web con dashboard visual
-
----
-
-## METRICAS QUE DETECTA
-
-- **Desperdicio:** Porcentaje de energia consumida sin ocupacion
-- **Ahorro potencial:** Dinero que se puede ahorrar (en euros)
-- **Autosuficiencia:** Porcentaje de energia renovable vs consumo
-- **Balance energetico:** Diferencia entre generacion y consumo
-
----
-
-## RESULTADOS ACTUALES
-
-- **Desperdicio detectado:** 16.1% del consumo total
-- **Ahorro potencial:** 32.73 euros en el periodo analizado
-- **Autosuficiencia:** 56.1% (energia renovable)
-
----
-
-## PARA EL EVENTO
-
-1. **Actualizar datos:** Seguir `GUIA_METER_DATOS.md`
-2. **Ejecutar analisis:** `python analisis_simple.py`
-3. **Generar graficos:** `python graficos_presentacion.py`
-4. **Presentar:** Usar `GUION_PRESENTACION.md`
-
----
-
-## TECNOLOGIAS
-
-- **Python** - Analisis de datos
-- **Pandas** - Manipulacion de datos
-- **Matplotlib** - Visualizaciones
-- **HTML/CSS** - Dashboard web
-
----
-
-**Simple pero efectivo. ROI inmediato. Entendible para cualquiera.**
+**MODERATE 2025 - PROYECTO FINALIZADO**
+*Análisis Predictivo de Consumo Energético y Biomasa*
