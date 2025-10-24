@@ -6,7 +6,7 @@ Análisis predictivo de consumo energético y biomasa utilizando datos históric
 
 ### 📊 **ENTREGABLE PRINCIPAL**
 
-![Análisis Completo con Outliers](entregable_final_con_outliers.png)
+![Análisis Completo con Outliers](ENTREGABLE_COMPLETO_MODERATE_2025.png)
 
 **Dashboard completo con:**
 - ✅ Comparación histórica consumo energético con detección de outliers
@@ -15,18 +15,38 @@ Análisis predictivo de consumo energético y biomasa utilizando datos históric
 - ✅ Tabla resumen completa con estadísticas de outliers
 - ✅ Alertas automáticas basadas en detección de outliers
 
+### 📈 **ANÁLISIS ADICIONALES**
+
+![Análisis de Biomasa](datos_originales/Imagenes/Biomasa.png)
+
+**Análisis específico de consumo de biomasa:**
+- ✅ Patrones de consumo estacional
+- ✅ Identificación de tendencias
+- ✅ Optimización de recursos
+
+![Resultados de Procesamiento](datos_originales/Imagenes/output.png)
+
+**Resultados de procesamiento de datos:**
+- ✅ Validación de modelos
+- ✅ Métricas de rendimiento
+- ✅ Visualizaciones de resultados
+
 ## 📁 **ESTRUCTURA DEL PROYECTO**
 
 ```
 moderate-innovathon/
 ├── README.md                                    # Este archivo
-├── entregable_final_con_datos_reales.py         # Script principal con outliers
-├── entregable_final_con_outliers.png            # Dashboard principal
-├── graficos/                                    # Visualizaciones
-│   └── entregable_final_moderate.png           # Dashboard alternativo
+├── ENTREGABLE_COMPLETO_MODERATE_2025.png        # Dashboard principal completo
+├── ENTREGABLE_COMPLETO_MODERATE_2025.py         # Script generador principal
+├── entregable_final_con_datos_reales.py         # Script con outliers
+├── entregable_final_con_outliers.png            # Dashboard con outliers
+├── PRESENTACION_MODERATE_2025.md                # Guión de presentación
 └── datos_originales/                           # Datos originales del evento
     ├── hdd-anual/                              # Datos HDD anuales (2019-2025)
     ├── produccion-energetica/                  # Datos de producción energética
+    ├── Imagenes/                               # Análisis adicionales
+    │   ├── Biomasa.png                         # Análisis de biomasa
+    │   └── output.png                          # Resultados de procesamiento
     ├── consumo-biomasa.xlsx                    # Datos de consumo de biomasa
     ├── presentacion.pdf                        # Presentación del evento
     └── api-aemet.pdf                           # Documentación API AEMET
@@ -46,8 +66,10 @@ Los notebooks incluidos muestran el análisis completo:
 - **`HDD_futur.ipynb`** - Análisis de Heating Degree Days y predicciones meteorológicas
 
 ### 3. **Resultados Visuales**
-- **`entregable_final_con_outliers.png`** - Dashboard principal con outliers
-- **`graficos/entregable_final_moderate.png`** - Dashboard alternativo
+- **`ENTREGABLE_COMPLETO_MODERATE_2025.png`** - Dashboard principal completo
+- **`entregable_final_con_outliers.png`** - Dashboard con outliers
+- **`datos_originales/Imagenes/Biomasa.png`** - Análisis específico de biomasa
+- **`datos_originales/Imagenes/output.png`** - Resultados de procesamiento
 
 ## 📊 **RESULTADOS PRINCIPALES**
 
