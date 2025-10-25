@@ -11,16 +11,21 @@ import streamlit as st
 from src.modeling import build_models
 from src.aemet import compute_hdd_next7
 
-BASE_DIR = Path('/workspace/datos_originales')
+DEFAULT_BASE = Path('/workspace/datos_originales')
 DEFAULT_LAT = 40.9701039
 DEFAULT_LON = -5.6635397
 
 st.set_page_config(page_title='MODERATE - Biomasa', layout='wide')
 st.title('Predicción semanal de biomasa por instalación')
 
+colA, colB = st.columns([2,1])
+with colA:
+    base_dir_text = st.text_input('Carpeta de datos', str(DEFAULT_BASE))
+base_dir = Path(base_dir_text)
+
 # Cargar modelos
 with st.spinner('Entrenando modelos...'):
-    energy_models, biomass_model, baseline_energy = build_models(BASE_DIR)
+    energy_models, biomass_model, baseline_energy = build_models(base_dir)
 
 inst_list = sorted(energy_models.keys())
 col1, col2, col3 = st.columns([2,1,1])

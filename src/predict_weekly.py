@@ -19,10 +19,12 @@ def main():
     parser.add_argument('--lat', type=float, default=DEFAULT_LAT)
     parser.add_argument('--lon', type=float, default=DEFAULT_LON)
     parser.add_argument('--base-temp', type=float, default=18.0)
+    parser.add_argument('--base-dir', type=str, default=str(BASE_DIR), help='Carpeta base con subdirs hdd-anual/, produccion-energetica/ y consumo-biomasa.xlsx')
     parser.add_argument('--out', type=str, default='/workspace/Entregables/prediccion_semanal.json')
     args = parser.parse_args()
 
-    energy_models, biomass_model, baseline_energy = build_models(BASE_DIR)
+    data_dir = Path(args.base_dir)
+    energy_models, biomass_model, baseline_energy = build_models(data_dir)
 
     if args.inst.lower() != 'all':
         target_insts = set(s.strip().upper() for s in args.inst.split(','))
